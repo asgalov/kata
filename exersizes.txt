@@ -1,0 +1,5 @@
+solve the birthday paradox
+section 1.5 of Cormen afterreading probability theory
+learb the properties of ln(x) - why the integral converges to finite number ln(x)
+solve sophisticated logarithmic equations with the use approximation function
+calculate sum for k = 1 to n of ln(k)

@@ -1,0 +1,106 @@
+The enfeeblement of mathematical skill
+We look for deeds not words
+All you will need is a large sheet of paper, and fairly decent handwriting in order to evaluate horrendous-looking sums and to discover subtle patterns in data
+One of the main objectives of this book is to explain how a person can solve recurrences without being clairvoyant
+We might conjecture that ... = we might guess that ...
+Exercise 3 illustrates this with a vengeance
+Such programs are indispensable, especially for people who need to deal with large formulas (незаменимы)
+Such newfangled mth powers are defined by the rule ...
+I've no time for such newfangled nonsense
+But the time of 'reckoning has finally arrived
+Writing well in any subject is a useful skill to possess
+I do not possess a television set
+During the geometry course I proved this formula in the case that alpha was an acute angle and left the case of an obtuse angle as an exercise
+At what point does the following derivation go astray?
+Eventually, after midnight, I arrived at the hotel (в конечном счете)
+Some won't have the least comprehension of what I'm trying to do (comprehension - понимание)
+The town is nested inside a large crater on the flanks of a volcano (nested - вложенные)
+The infection was discovered only incidentally at a postmortem examination
+It arises often enough in applications to deserve (be worth) its own notation
+Nitpicking arouses our creative juices
+The speaker's intentions were not made explicit
+An important special case of this theorem is worth noting explicitly
+He vaguely ['вейгли] (uncertainly) remembered talking to her once
+Let's return to the main topic after that brief digression
+Queen Elizabeth reigns over the UK
+This derivation merits careful study
+Dividing thrice by 10 and throwing off digits is the same as dividing by 1000 and tossing the remainder [ri'mainder]
+The boundaries of the mundane world
+Book five lays out the work of Eudoxus on proportion applied to com'mensurable (proportional) and incom'mensurable magnitudes
+One of the authors of this book has modestly decided to call these the Knuth numbers
+The penultimate chapter of the book is really weird
+The officer pursued the van
+to pursue a career - продолжить карьеру
+quotient and remainder ['kwoSHent] [ri'mainder]
+a circle of circumference 2*Pi*R
+His bizarre [ба'заа] disguise drew stares from fellow shoppers
+Rosie had replied in a mumble
+In case of ties ...
+Now let's plunge in and really immerse ourselves in the subject
+Moreover, 'm\n' gives an impression that m is the denominator of an implied ratio.
+We have designed this book to be both versatile and complete.
+You can consider this book to be a УbuffetФ ['бууфей] or УsmorgasbordФ from which you can pick and choose the material that best supports the course you wish to teach
+This problem arises frequently in practice and provides fertile ground for introducing many standard design techniques and analysis tools.
+Which algorithm is best for a given application depends on the extent to which the items are already somewhat sorted
+An algorithm is said to be correct if, for every input instance, it halts with the correct output
+Practical applications of algorithms are ubiquitous [ub'iquitous] (ever-present) and include the following examples ...
+These lists are far from exhaustive (as you again have probably surmised from this bookТs heft).
+Such ambitious questions have long tantalized the world's best thinkers
+This problem is the well-known Уtraveling-salesman problem,Ф and it is NP-complete.
+For many years, we could count on processor clock speeds increasing at a steady rate.
+In order to elicit (achieve) the best performance from multicore computers, we need to design algorithms with parallelism in mind
+The event was recorded by a contemporary historian (современником событи€)
+Algorithms are at the core of most technologies used in contemporary computers.
+At larger problem sizes the differences in efficiency between algorithms become particularly prominent (known, famous).
+Issues of data abstraction, modularity, and error handling are often ignored in order to convey (transmit) the essence of the algorithm more concisely (shortly).
+The remaining subarray corresponds to the pile of cards still on the table
+A false seam sewn [cеун] into the back of a seamless stocking
+The implication is that no one person at the bank is responsible
+At each vertex we consider the angles formed on the adjacent faces at that corner
+This is highly sophisticated computer system
+He will be forever immortalized in the history books
+She pushed the bike up the steep hill
+Umami is a category of taste in food (besides sweet, sour, salt, and bitter), corresponding to the flavor of glutamates, especially monosodium glutamate.
+I like salad with sour cranberries with sweet beet
+He pigeonholed his charts and notes
+We prefer not to get bogged down in such formalism, and so we rely on our informal analysis to show that the second property holds for the outer loop
+Indentation indicates block structure.
+Then the notation x.f.g is implicitly parenthesized as (x.f).g. (не€вно)
+She implicitly suggested that he was responsible for the error (безоговорочно)
+Such analysis may indicate more than one viable candidate, but we can often discard several inferior algorithms in the process
+
+Strictly speaking, we should precisely define the instructions of the RAM model and their costs. To do so, however, would be tedious [тидиос] (too long and boring) and would yield (bring) little insight (understanding) into algorithm design and analysis. Yet we must be careful not to abuse the RAM model.
+
+Robert's expression had obviously convinced her of his innocence
+The judge abused his power by imposing the fines
+He is endeavoring to help the Third World (try hard to do or achieve something)
+her dexterity with chopsticks
+The company has evolved into a major chemical manufacturer (develop, expand)
+This notation is more concise (brief) and more easily manipulated
+The scope of average-case analysis is limited, because it may not be apparent (obvious) what constitutes (compose) an УaverageФ input for a particular problem
+The worst-case running time of the algorithm is theta ['thиита] of n-squared
+Immediately, a sentinel standing guard near the jail confronted him
+Her hands were coarsened by outside work
+Thus, it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small.
+They were apt to exaggerate any aches and pains
+O(g(n)) is pronounced Уbig-oh of g of nФ or sometimes just Уoh of g of nФ
+In other words, the right-hand side of an equation provides a coarser level of detail than the left-hand side
+It takes as input an array of numbers, and it determines the contiguous (adjacent) subarray whose values have the greatest sum
+Technicalities in recurrences
+Like the chemicals the company produces, the stock price of the Volatile Chemical Corporation is rather volatile (unstable)
+It returns a tuple containing the indices demarcating a maximum subarray that crosses the midpoint, along with the sum of the values in a maximum subarray
+The key to StrassenТs method is to make the recursion tree slightly less bushy 
+Although indicator random variables may seem cumbersome for an application such as counting the expected number of heads on a flip of a single coin, they are useful for analyzing situations in which we perform repeated random trials
+We shall use indicator random variables throughout this book
+Translating an algorithm for sorting numbers into a program for sorting records is conceptually straightforward, although in a given engineering situation other subtleties may make the actual programming task a challenge
+Sometimes an application inherently needs to sort information
+Many engineering issues come to the fore when implementing sorting algorithms.
+If two nodes have the same parent, they are siblings
+She wore a sloppy sweater and jeans
+
+PARTITION always selects an element x as a pivot element around which to partition the subarray
+For these angles, the contradiction used to prove the corollary does not arise
+
+key кии
+entry энтри
+complement - дополнение
