@@ -97,10 +97,23 @@ Sometimes an application inherently needs to sort information
 Many engineering issues come to the fore when implementing sorting algorithms.
 If two nodes have the same parent, they are siblings
 She wore a sloppy sweater and jeans
+They deferred the decision until February
 
 PARTITION always selects an element x as a pivot element around which to partition the subarray
 For these angles, the contradiction used to prove the corollary does not arise
+They placed great emphasis on the individual's freedom
+Before learning about these elements, you need a good grasp of how CSS is used to control the design of web pages
 
-key кии
+thinner paints need black added to increase opacity
+When choosing a typeface, it is important to understand that a browser will usually only display it if it's installed on that user's computer.
+transparent blue water
+the drawings were captioned with humorous texts
+ кии
 entry энтри
 complement - дополнение
+Part II explains how JavaScript is used in web browsers and covers the sprawling browser-based APIs loosely known as їclient-side JavaScript.ї
+
+Whereas mathematical sets are unchanging, the sets manipulated by algorithms can grow, shrink, or otherwise change over time.
+The new president's foreign policy is very similar to that of his predecessor
+Schoenberg saw himself as a natural successor to the German romantic school
+
