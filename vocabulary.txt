@@ -104,3 +104,4 @@ For these angles, the contradiction used to prove the corollary does not arise
 key кии
 entry энтри
 complement - дополнение
+Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter without studying the mechanics in detail
