@@ -30,7 +30,7 @@ Book five lays out the work of Eudoxus on proportion applied to com'mensurable (
 One of the authors of this book has modestly decided to call these the Knuth numbers
 The penultimate chapter of the book is really weird
 The officer pursued the van
-to pursue a career - продолжить карьеру
+to pursue a career 
 quotient and remainder ['kwoSHent] [ri'mainder]
 a circle of circumference 2*Pi*R
 His bizarre [ба'заа] disguise drew stares from fellow shoppers
@@ -83,7 +83,7 @@ Immediately, a sentinel standing guard near the jail confronted him
 Her hands were coarsened by outside work
 Thus, it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small.
 They were apt to exaggerate any aches and pains
-O(g(n)) is pronounced Уbig-oh of g of nФ or sometimes just Уoh of g of nФ
+O(g(n)) is pronounced big-oh of g of n or sometimes just oh of g of n
 In other words, the right-hand side of an equation provides a coarser level of detail than the left-hand side
 It takes as input an array of numbers, and it determines the contiguous (adjacent) subarray whose values have the greatest sum
 Technicalities in recurrences
@@ -107,13 +107,11 @@ Before learning about these elements, you need a good grasp of how CSS is used t
 thinner paints need black added to increase opacity
 When choosing a typeface, it is important to understand that a browser will usually only display it if it's installed on that user's computer.
 transparent blue water
-the drawings were captioned with humorous texts
- кии
-entry энтри
-complement - дополнение
-Part II explains how JavaScript is used in web browsers and covers the sprawling browser-based APIs loosely known as њclient-side JavaScript.њ
-
+The drawings were captioned with humorous texts
+entry 
+complement 
+Part II explains how JavaScript is used in web browsers and covers the sprawling browser-based APIs loosely known as "client-side JavaScript".
 Whereas mathematical sets are unchanging, the sets manipulated by algorithms can grow, shrink, or otherwise change over time.
 The new president's foreign policy is very similar to that of his predecessor
 Schoenberg saw himself as a natural successor to the German romantic school
-
+Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter without studying the mechanics in detail
