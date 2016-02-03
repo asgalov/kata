@@ -48,7 +48,7 @@ These lists are far from exhaustive (as you again have probably surmised from th
 Such ambitious questions have long tantalized the world's best thinkers
 This problem is the well-known “traveling-salesman problem,” and it is NP-complete.
 For many years, we could count on processor clock speeds increasing at a steady rate.
-In order to elicit (achieve) the best performance from multicore computers, we need to design algorithms with parallelism in mind
+In order to elicit the best performance from multicore computers, we need to design algorithms with parallelism in mind (achieve) 
 The event was recorded by a contemporary historian (современником события)
 Algorithms are at the core of most technologies used in contemporary computers.
 At larger problem sizes the differences in efficiency between algorithms become particularly prominent (known, famous).
@@ -67,7 +67,7 @@ We prefer not to get bogged down in such formalism, and so we rely on our inform
 Indentation indicates block structure.
 Then the notation x.f.g is implicitly parenthesized as (x.f).g. (неявно)
 She implicitly suggested that he was responsible for the error (безоговорочно)
-Such analysis may indicate more than one viable candidate, but we can often discard several inferior algorithms in the process
+Such analysis may indicate more than one viable candidate, but we can often discard several inferior algorithms in the process (lower in the rank)
 
 Strictly speaking, we should precisely define the instructions of the RAM model and their costs. To do so, however, would be tedious [тидиос] (too long and boring) and would yield (bring) little insight (understanding) into algorithm design and analysis. Yet we must be careful not to abuse the RAM model.
 
@@ -76,10 +76,11 @@ The judge abused his power by imposing the fines
 He is endeavoring to help the Third World (try hard to do or achieve something)
 her dexterity with chopsticks
 The company has evolved into a major chemical manufacturer (develop, expand)
-This notation is more concise (brief) and more easily manipulated
-The scope of average-case analysis is limited, because it may not be apparent (obvious) what constitutes (compose) an “average” input for a particular problem
+This notation is more concise and more easily manipulated (brief) 
+The scope of average-case analysis is limited, because it may not be apparent what constitutes an “average” input for a particular problem (obvious) (compose) 
 The worst-case running time of the algorithm is theta ['thиита] of n-squared
 Immediately, a sentinel standing guard near the jail confronted him
+A sentinel is a dummy object that allows us to simplify boundary conditions.
 Her hands were coarsened by outside work
 Thus, it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small.
 They were apt to exaggerate any aches and pains
@@ -115,3 +116,5 @@ Whereas mathematical sets are unchanging, the sets manipulated by algorithms can
 The new president's foreign policy is very similar to that of his predecessor
 Schoenberg saw himself as a natural successor to the German romantic school
 Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter without studying the mechanics in detail
+Given an element x whose key attribute has already been set, the LIST INSERT procedure їsplicesї x onto the front of the linked list, as shown in Figure 10.3(b).
+

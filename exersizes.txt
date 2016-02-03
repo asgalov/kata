@@ -6,3 +6,5 @@ solve sophisticated logarithmic equations with the use approximation function
 calculate sum for k = 1 to n of ln(k)
 linux administrating
 data bases
+study JVM
+study how debugger works
