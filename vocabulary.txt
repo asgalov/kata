@@ -115,3 +115,4 @@ Whereas mathematical sets are unchanging, the sets manipulated by algorithms can
 The new president's foreign policy is very similar to that of his predecessor
 Schoenberg saw himself as a natural successor to the German romantic school
 Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter without studying the mechanics in detail
+When the dynamic set represented by linked list L is nonempty, the free list may be intertwined with list L
