@@ -45,8 +45,7 @@ public class SinglyLinkedList<K> {
         } else{
             head = new Link(el, head);
         }
-        System.out.println("insert "+el.toString());
-        System.out.println("list:  "+this.toString());            
+
     }
     
     public K delete(K el){
