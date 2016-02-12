@@ -15,29 +15,18 @@ import algorithms.data.SinglyLinkedList;
 public class KnapSack10Problem {
 
     public static SinglyLinkedList<Integer> selectItems(int[] vv, int[] ww, int maxW){
-        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
-        select(list, ww, vv, maxW);
-        list.reverse();
-        return list;
-    }
-
-    private static void select(SinglyLinkedList<Integer> list, int[] ww, int[] vv, int maxW) {
-        if (maxW <= 0){
-            return;
-        }
-        
-        double maxRv = 0;
-        int maxI = -1;
-        for (int i = 0; i < ww.length; i++) {
-            double rv = (1.0*vv[i]/(1.0*ww[i]));
-            int n = (maxW/ww[i]);
-            if (ww[i] * rv * n > maxRv){
-                maxRv = ww[i] * rv * n;
-                maxI = i;
+        int[] sums = new int[vv.length];
+        int w = 0;
+        int i = 0;
+        while (w <= maxW){
+            w = ww[i];
+            i++;
+            while (){
+                
             }
         }
-        list.insert(ww[maxI]);
-        select(list, ww, vv, maxW - ww[maxI]*((int)(maxW/ww[maxI])));
+        return null;
     }
+
     
 }
