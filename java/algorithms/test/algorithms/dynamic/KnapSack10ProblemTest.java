@@ -5,14 +5,7 @@
  */
 package algorithms.dynamic;
 
-import algorithms.data.SinglyLinkedList;
-import algorithms.greedy.BadKnapSackPacker;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -29,10 +22,11 @@ public class KnapSack10ProblemTest {
     @Test
     public void testSelectItems() {
         System.out.println("selectItems");
-        int[] vv = {1,3,2,10,5,30,4,4};
         int[] ww = {1,2,5,6,10,15,20,100};
+        int[] vv = {1,3,2,10,5,30,4,4};
         System.out.println("7 kg: "+KnapSack10Problem.selectItems(vv, ww, 7).toString());
         System.out.println("50 kg: "+KnapSack10Problem.selectItems(vv, ww, 50).toString());
+        System.out.println("30 kg: "+KnapSack10Problem.selectItems(vv, ww, 30).toString());
     }
     
 }
