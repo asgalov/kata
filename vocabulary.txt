@@ -119,3 +119,8 @@ Although the mechanics of red-black trees are somewhat intricate, you can glean 
 Given an element x whose key attribute has already been set, the LIST INSERT procedure splices x onto the front of the linked list, as shown in Figure 10.3(b).
 When the dynamic set represented by linked list L is nonempty, the free list may be intertwined with list L
 Two of the schemes, hashing by division and hashing by multiplication, are heuristic in nature, whereas the third scheme, universal hashing, uses randomization to provide provably good performance
+When searching for an element, we systematically examine table slots until either we find the desired element or we have ascertained that the element is not in the table (make sure)
+Section 15.1 examines the problem of cutting a rod into rods of smaller length in way that maximizes their total value
+we can parenthesize pairs of matrices to resolve all ambiguities in how the matrices are multiplied together
+The thief wants to take as valuable a load as possible, but he can carry at most W pounds in his knapsack, for some integer W
+Between any pair of professional wrestlers, there may or may not be a rivalry
