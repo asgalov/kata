@@ -5,9 +5,7 @@
  */
 package algorithms.graph;
 
-import algorithms.data.ArrayStack;
-import java.util.HashSet;
-import java.util.Set;
+import algorithms.data.ArrayQueue;
 
 /**
  *
@@ -15,48 +13,49 @@ import java.util.Set;
  */
 public class Bfs {
     
-    public static int search(Graph g, int vertex){
-        ArrayStack<Integer> stack = new ArrayStack(g.getVerticies().length);
-        stack.push(g.getVerticies()[0]);
-        Set<Integer> black = new HashSet<>();
-        Set<Integer> gray = new HashSet<>();
-        while (!stack.isEmpty()){
-            int v = stack.pop();
-            black.add(v);
-            if (v == vertex){
-                return v;
-            }
-            Set<Integer> adjacent = g.getAdjacent(v);
-            for (Integer va : adjacent) {
-                if (!gray.contains(va) && !black.contains(va)){
-                    stack.push(va);
+    public static int[] getDistances(int[][] adjMatrix, int s){
+        int[] colors = new int[adjMatrix.length];
+        int[] distances = new int[adjMatrix.length];
+        for (int i = 0; i < distances.length; i++) {
+            colors[i] = 0;
+            distances[i] = Integer.MAX_VALUE;
+        }
+        colors[s - 1] = 1;
+        distances[s - 1] = 0;
+        ArrayQueue<Integer> queue = new ArrayQueue<>(adjMatrix.length);
+        queue.enqueue(s);
+        while (!queue.isEmpty()){
+            int v = queue.dequeue();
+            int[] uu = getAdj(adjMatrix, v);
+            for (int i = 0; i < uu.length; i++) {
+                if (colors[uu[i] - 1] == 0){
+                    queue.enqueue(uu[i]);
+                    distances[uu[i] - 1] = distances[v - 1] + 1;
+                    colors[uu[i] - 1] = 1;
                 }
             }
-            gray.addAll(adjacent);
+            colors[v - 1] = 2;
         }
-        return -1;
+        return distances;
     }
 
-    public static int dist(Graph g, int start, int end){
-        ArrayStack<Integer> stack = new ArrayStack(g.getVerticies().length);
-        stack.push(start);
-        Set<Integer> black = new HashSet<>();
-        Set<Integer> gray = new HashSet<>();
-        while (!stack.isEmpty()){
-            int v = stack.pop();
-            if (v == end){
-                return black.size();
-            }
-            black.add(v);
-            Set<Integer> adjacent = g.getAdjacent(v);
-            for (Integer va : adjacent) {
-                if (!gray.contains(va) && !black.contains(va)){
-                    stack.push(va);
-                }
-            }
-            gray.addAll(adjacent);
+    static int[] getAdj(int[][] adjMatrix, int v) {
+        int n = 0;
+        for (int i = 0; i < adjMatrix.length; i++){
+            n += adjMatrix[v - 1][i];
         }
-        return -1;
+        
+        int[] adj = new int[n - 1];
+        int k = 0;
+        for (int i = 0; i < adjMatrix.length; i++) {
+            if (adjMatrix[v - 1][i] == 1 && i != v - 1){
+                adj[k] = i + 1;
+                k ++;
+            }
+        }
+        
+        return adj;
     }
+
     
 }

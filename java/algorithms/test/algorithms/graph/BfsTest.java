@@ -14,42 +14,35 @@ import static org.junit.Assert.*;
  */
 public class BfsTest {
     
-    private final Graph g;
-    
-    public BfsTest() {
-        int[][] tmp = {
+    int[][] tmp = {
             {1,1,1,0,0,0,0,1},
             {1,1,0,0,0,1,0,0},
             {1,0,1,0,1,1,1,0},
-            {0,0,0,0,1,0,0,0},
-            {0,0,1,1,0,1,0,0},
-            {0,1,1,0,1,0,0,0},
-            {0,0,1,0,0,0,0,0},
-            {1,0,0,0,0,0,0,0}};
-        
-        this.g = new Graph(tmp);
-    }
+            {0,0,0,1,1,0,0,0},
+            {0,0,1,1,1,1,0,0},
+            {0,1,1,0,1,1,0,0},
+            {0,0,1,0,0,0,1,0},
+            {1,0,0,0,0,0,0,1}};
+    
     
     @Test
     public void testSearch() {
-        System.out.println("search");
-        assertEquals(-1, Bfs.search(g, 10));
-        assertEquals(-1, Bfs.search(g, 0));
-        assertEquals(-1, Bfs.search(g, 11));
-        assertEquals(3, Bfs.search(g, 3));
-        assertEquals(6, Bfs.search(g, 6));
-        assertEquals(5, Bfs.search(g, 5));
-        assertEquals(4, Bfs.search(g, 4));
-        assertEquals(8, Bfs.search(g, 8));
+        int[] dist = Bfs.getDistances(tmp, 3);
+        System.out.println("distances to 3 :");
+        for (int i = 0; i < dist.length; i++) {
+            System.out.println(i + 1 +" "+dist[i]);
+        }
+        
     }
     
-    @Test
-    public void testDist() {
-        System.out.println("dist");
-        assertEquals(-1, Bfs.dist(g, 1, 10));
-        assertEquals(3, Bfs.dist(g, 1, 4));
-        assertEquals(4, Bfs.dist(g, 8, 4));
-        assertEquals(2, Bfs.dist(g, 1, 5));
+//    @Test
+    public void testAdj() {
+        int[] adj = Bfs.getAdj(tmp, 3);
+        System.out.println("adjacent to 3 :");
+        for (int i = 0; i < adj.length; i++) {
+            System.out.print(" "+adj[i]);
+        }
+        System.out.println("");
     }
     
 }
