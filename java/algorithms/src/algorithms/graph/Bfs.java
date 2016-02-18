@@ -26,7 +26,7 @@ public class Bfs {
         queue.enqueue(s);
         while (!queue.isEmpty()){
             int v = queue.dequeue();
-            int[] uu = getAdj(adjMatrix, v);
+            int[] uu = GraphUtils.getAdj(adjMatrix, v);
             for (int i = 0; i < uu.length; i++) {
                 if (colors[uu[i] - 1] == 0){
                     queue.enqueue(uu[i]);
@@ -39,23 +39,7 @@ public class Bfs {
         return distances;
     }
 
-    static int[] getAdj(int[][] adjMatrix, int v) {
-        int n = 0;
-        for (int i = 0; i < adjMatrix.length; i++){
-            n += adjMatrix[v - 1][i];
-        }
-        
-        int[] adj = new int[n - 1];
-        int k = 0;
-        for (int i = 0; i < adjMatrix.length; i++) {
-            if (adjMatrix[v - 1][i] == 1 && i != v - 1){
-                adj[k] = i + 1;
-                k ++;
-            }
-        }
-        
-        return adj;
-    }
+    
 
     
 }

@@ -35,14 +35,4 @@ public class BfsTest {
         
     }
     
-//    @Test
-    public void testAdj() {
-        int[] adj = Bfs.getAdj(tmp, 3);
-        System.out.println("adjacent to 3 :");
-        for (int i = 0; i < adj.length; i++) {
-            System.out.print(" "+adj[i]);
-        }
-        System.out.println("");
-    }
-    
 }
