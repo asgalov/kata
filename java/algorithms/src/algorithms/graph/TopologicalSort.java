@@ -5,66 +5,50 @@
  */
 package algorithms.graph;
 
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 /**
  *
  * @author gas
  */
 public class TopologicalSort {
     
-    private final int[][] adjMatrix;
-    private final int[] startTimes;
-    private final int[] finishTimes;
-    private final int[] colors;
-    private int t = 0;
-    private final int[] sort;
-    private int counter = 0;
-
-    public TopologicalSort(int[][] adjMatrix) {
-        this.adjMatrix = adjMatrix;
-        this.colors = new int[adjMatrix.length];
-        this.startTimes = new int[adjMatrix.length];
-        this.finishTimes = new int[adjMatrix.length];
-        this.sort = new int[adjMatrix.length];
-        this.counter = adjMatrix.length - 1;
-        for (int i = 0; i < adjMatrix.length; i++) {
-            colors[i] = 0;
-        }
-        dfs();
-
-    }
-    
-    public int[] sort(){
+    public static LinkedList<Integer> sort(LinkedList<LinkedList<Integer>> adjList){
+        LinkedList<Integer> sort = new LinkedList<>();
+        removeEmpty(adjList, sort);
+        Collections.reverse(sort);
         return sort;
     }
-   
-
-    private void dfs() {
-        for (int i = 0; i < adjMatrix.length; i++) {
-            int v = i + 1;
-            if (colors[i] == 0){
-                dfsVisit(v);
-            }
-        }
-    }
-
-    private void dfsVisit(int v) {
-        t ++;
-        startTimes[v - 1] = t;
-        System.out.println("visit "+v);
-        colors[v - 1] = 1;
-        int[] adjV = GraphUtils.getAdj(adjMatrix, v);
-        for (int i = 0; i < adjV.length; i++) {
-            int u = adjV[i];
-            if (colors[u - 1] == 0){
-                colors[u - 1] = 1;
-                dfsVisit(u);
-            }
-        }
-        colors[v - 1] = 2;
-        t ++;
-        finishTimes[v - 1] = t;
-        sort[counter] = v;
-        counter --;
-    }
     
+    private static void removeEmpty(LinkedList<LinkedList<Integer>> adjList, LinkedList<Integer> sort) {
+        if (adjList.isEmpty()){
+            return ;
+        }
+                
+        for (Iterator<LinkedList<Integer>> it = adjList.iterator(); it.hasNext();) {
+            LinkedList<Integer> list = it.next();
+            if (list.size() == 1){
+                Integer v = list.get(0);
+                sort.add(v);
+                System.out.println("remove "+v);
+                it.remove();
+                clearVertex(v, adjList);
+            }
+        }
+        
+        removeEmpty(adjList, sort);
+    }
+
+    private static void clearVertex(Integer v, LinkedList<LinkedList<Integer>> adjList) {
+        for (LinkedList<Integer> list : adjList) {
+            for (Iterator<Integer> it = list.iterator(); it.hasNext();) {
+                if (it.next().equals(v)){
+                    it.remove();
+                }
+            }
+        }
+    }
+   
 }

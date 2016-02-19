@@ -5,13 +5,9 @@
  */
 package algorithms.graph;
 
-import algorithms.utils.Utils;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.Arrays;
+import java.util.LinkedList;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -24,19 +20,18 @@ public class TopologicalSortTest {
 
     @Test
     public void testSomeMethod() {
-        int[][] matrix = {
-            {0,0,0,0,0,0,0,1,1},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,1,0,0,0,0,0,0,0},
-            {1,0,0,0,0,0,0,1,0},
-            {0,0,0,0,0,0,0,1,0},
-            {0,0,0,1,0,0,0,0,1},
-            {0,0,0,0,0,0,0,0,0},
-            {0,1,0,0,0,0,0,0,0}};
-        
-        TopologicalSortDfs sort = new TopologicalSortDfs(matrix);
-        System.out.println("topological sort: " + Utils.toString(sort.sort()));
+        LinkedList<LinkedList<Integer>> adjList = new LinkedList<>();
+        adjList.add(new LinkedList<>(Arrays.asList(1, 9)));
+        adjList.add(new LinkedList<>(Arrays.asList(2)));
+        adjList.add(new LinkedList<>(Arrays.asList(3)));
+        adjList.add(new LinkedList<>(Arrays.asList(4, 2)));
+        adjList.add(new LinkedList<>(Arrays.asList(5, 1, 8)));
+        adjList.add(new LinkedList<>(Arrays.asList(6, 8)));
+        adjList.add(new LinkedList<>(Arrays.asList(7, 4, 9)));
+        adjList.add(new LinkedList<>(Arrays.asList(8)));
+        adjList.add(new LinkedList<>(Arrays.asList(9, 2)));
+
+        System.out.println("topological sort: " + TopologicalSort.sort(adjList).toString());
     }
     
 }
