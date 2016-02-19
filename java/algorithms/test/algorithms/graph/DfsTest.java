@@ -22,7 +22,7 @@ public class DfsTest {
     public DfsTest() {
     }
 
-    @Test
+//    @Test
     public void testGetStartTimes() {
         int[][] matrix = {
             {0,1,0,1,0,0},
@@ -37,5 +37,26 @@ public class DfsTest {
         System.out.println("dfs finish times: "+Utils.toString(instance.getFinishTimes()));
 //        assertArrayEquals(expResult, result);
     }
+
+
+    @Test
+    public void testDfs() {
+        int[][] matrix = {
+            {0,0,0,0,0,0,0,1,1},
+            {0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0},
+            {0,1,0,0,0,0,0,0,0},
+            {1,0,0,0,0,0,0,1,0},
+            {0,0,0,0,0,0,0,1,0},
+            {0,0,0,1,0,0,0,0,1},
+            {0,0,0,0,0,0,0,0,0},
+            {0,1,0,0,0,0,0,0,0}};
+        
+        Dfs instance = new Dfs(matrix);
+        System.out.println("dfs start times: "+Utils.toString(instance.getStartTimes()));
+        System.out.println("dfs finish times: "+Utils.toString(instance.getFinishTimes()));
+//        assertArrayEquals(expResult, result);
+    }
+
     
 }
