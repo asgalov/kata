@@ -56,8 +56,6 @@ public class SCC {
             newOrder[finishTimes[i] - 1] = i + 1;
         }
         
-        System.out.println("new order: "+Utils.toString(newOrder));
-        
         t = 0;
         for (int i = 0; i < colors.length; i++) {
             colors[i] = 0;

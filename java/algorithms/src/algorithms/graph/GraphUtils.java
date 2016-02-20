@@ -28,4 +28,28 @@ class GraphUtils {
         
         return adj;
     }    
+    
+    
+    static void printDfsTrees(int[] startTimes, int[] finishTimes){
+        int[] tmp = new int[startTimes.length * 2];
+        for (int i = 0; i < startTimes.length; i++) {
+            tmp[startTimes[i] - 1] = i + 1;
+            tmp[finishTimes[i] - 1] = -1*(i + 1);
+        }
+        
+        System.out.println("dfs trees: ");
+        int sign = 1;
+        for (int i = 0; i < tmp.length; i++) {
+            if (tmp[i] > 0){
+                System.out.print(tmp[i]+" ");    
+                sign = 1;
+            } else{
+                if (sign > 0){
+                    System.out.println("");
+                }
+                sign = -1;
+            }
+            
+        }
+    }
 }

@@ -40,6 +40,7 @@ public class SCCTest {
         SCC scc = new SCC(matrix);
         System.out.println("dfs start times: "+Utils.toString(scc.getStartTimes()));
         System.out.println("dfs finish times: "+Utils.toString(scc.getFinishTimes()));
+        GraphUtils.printDfsTrees(scc.getStartTimes(), scc.getFinishTimes());
     }
     
 }
