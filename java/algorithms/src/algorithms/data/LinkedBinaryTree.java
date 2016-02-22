@@ -9,9 +9,9 @@ package algorithms.data;
  *
  * @author gas
  */
-public class LinkedTree<K extends Comparable> {
+public class LinkedBinaryTree<K extends Comparable> {
 
-    private class Node {
+    public class Node {
         
         Node p;
         Node l;
@@ -24,9 +24,22 @@ public class LinkedTree<K extends Comparable> {
             this.r = r;
             this.value = value;
         }
+        
+        public Node getLeft(){
+            return l;
+        }
+        
+        public Node getRight(){
+            return r;
+        }
+        
     }
 
     private Node root = null;
+
+    public Node getRoot() {
+        return root;
+    }
     
     public void insert(K value){
         if (root == null){
