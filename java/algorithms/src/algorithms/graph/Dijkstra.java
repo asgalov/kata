@@ -5,7 +5,6 @@
  */
 package algorithms.graph;
 
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
@@ -35,41 +34,31 @@ public class Dijkstra {
     
     public static int[] getShortestPaths(int[][] adjMatrix, int s){
         int[] paths = new int[adjMatrix.length];
-        int[] pred = new int[adjMatrix.length];
-        int[] colors = new int[adjMatrix.length];
         for (int i = 0; i < paths.length; i++) {
             paths[i] = Integer.MAX_VALUE;
-            pred[i] = -1;
-            colors[i] = 0;
         }
         paths[s - 1] = 0;
-        colors[s - 1] = 1;
         
         PriorityQueue<WeightedVertex> queue = new PriorityQueue<>(paths.length);
-        for (int i = 0; i < colors.length; i++) {
+        for (int i = 0; i < paths.length; i++) {
             queue.add(new WeightedVertex(i + 1, paths[i]));    
         }
         
         while (!queue.isEmpty()){
             WeightedVertex wv = queue.poll();
             int v = wv.v;
-            colors[v - 1] = 2;
             int[] adjV = GraphUtils.getAdj(adjMatrix, v);
             for (int i = 0; i < adjV.length; i++) {
-                relax(adjMatrix, paths, pred, queue, v, adjV[i]);
-                if (colors[adjV[i] - 1] == 0){
-                    colors[adjV[i] - 1] = 1;
-                }
+                relax(adjMatrix, paths, queue, v, adjV[i]);
             }
         }
         return paths;
     }
 
-    private static void relax(int[][] adjMatrix, int[] paths, int[] pred, PriorityQueue<WeightedVertex> queue, int v, int u) {
+    private static void relax(int[][] adjMatrix, int[] paths, PriorityQueue<WeightedVertex> queue, int v, int u) {
         int w = adjMatrix[v - 1][u - 1];
         if (paths[u - 1] > paths[v - 1] + w){
             paths[u - 1] = paths[v - 1] + w;
-            pred[u - 1] = v;
         }
 
         queue.stream().forEach((wv) -> {
