@@ -46,7 +46,10 @@ public class Dijkstra {
         colors[s - 1] = 1;
         
         PriorityQueue<WeightedVertex> queue = new PriorityQueue<>(paths.length);
-        queue.add(new WeightedVertex(s, paths[s - 1]));
+        for (int i = 0; i < colors.length; i++) {
+            queue.add(new WeightedVertex(i + 1, paths[i]));    
+        }
+        
         while (!queue.isEmpty()){
             WeightedVertex wv = queue.poll();
             int v = wv.v;
@@ -55,7 +58,6 @@ public class Dijkstra {
             for (int i = 0; i < adjV.length; i++) {
                 relax(adjMatrix, paths, pred, queue, v, adjV[i]);
                 if (colors[adjV[i] - 1] == 0){
-                    queue.add(new WeightedVertex(adjV[i], paths[adjV[i] - 1]));
                     colors[adjV[i] - 1] = 1;
                 }
             }
