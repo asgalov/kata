@@ -5,6 +5,7 @@
  */
 package algorithms.graph;
 
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
@@ -16,7 +17,7 @@ public class Dijkstra {
     public static class WeightedVertex implements Comparable<WeightedVertex>{
 
         public final int v;
-        public final int w;
+        public int w;
 
         public WeightedVertex(int v, int w) {
             this.v = v;
@@ -52,7 +53,7 @@ public class Dijkstra {
             colors[v - 1] = 2;
             int[] adjV = GraphUtils.getAdj(adjMatrix, v);
             for (int i = 0; i < adjV.length; i++) {
-                relax(adjMatrix, paths, pred, v, adjV[i]);
+                relax(adjMatrix, paths, pred, queue, v, adjV[i]);
                 if (colors[adjV[i] - 1] == 0){
                     queue.add(new WeightedVertex(adjV[i], paths[adjV[i] - 1]));
                     colors[adjV[i] - 1] = 1;
@@ -62,12 +63,16 @@ public class Dijkstra {
         return paths;
     }
 
-    private static void relax(int[][] adjMatrix, int[] paths, int[] pred, int v, int u) {
+    private static void relax(int[][] adjMatrix, int[] paths, int[] pred, PriorityQueue<WeightedVertex> queue, int v, int u) {
         int w = adjMatrix[v - 1][u - 1];
         if (paths[u - 1] > paths[v - 1] + w){
             paths[u - 1] = paths[v - 1] + w;
             pred[u - 1] = v;
         }
+
+        queue.stream().forEach((wv) -> {
+            wv.w = paths[wv.v - 1];
+        });
     }
         
 }
