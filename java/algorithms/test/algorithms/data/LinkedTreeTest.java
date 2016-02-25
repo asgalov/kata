@@ -22,7 +22,7 @@ public class LinkedTreeTest {
     @Test
     public void testInsert() {
         
-        LinkedTree<Integer> tree = new LinkedTree<>();
+        LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<>();
         tree.insert(5);
         System.out.println("insert 5:"+tree.toString());
         tree.insert(2);
