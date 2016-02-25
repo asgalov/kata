@@ -10,7 +10,7 @@ package algorithms.graph;
  *
  * @author gas
  */
-public class Tree {
+public class BinaryTree {
     
     public class Node{
         public final Node left;
@@ -26,7 +26,7 @@ public class Tree {
     
     public final Node root;
 
-    public Tree(Node root) {
+    public BinaryTree(Node root) {
         this.root = root;
     }
     

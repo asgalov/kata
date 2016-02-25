@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package algorithms.graph;
 
-import algorithms.data.LinkedBinaryTree;
+import algorithms.utils.Utils;
 
 /**
  *
@@ -14,29 +13,21 @@ import algorithms.data.LinkedBinaryTree;
  */
 public class TreeDiameterCalculator {
     
-    private final LinkedBinaryTree tree;
-    private int diameter = -1;
-    
-    public TreeDiameterCalculator(LinkedBinaryTree tree) {
-        this.tree = tree;
-    }
-    
-    public int getDiameter() {
-        if (diameter == -1){
-            calc();
+    public static int getDiameter(int[][] adjMatrix){
+        int[] distances1 = Bfs.getDistances(adjMatrix, 1);
+        int leaf = 1;
+        for (int i = 0; i < distances1.length; i++) {
+            if (distances1[i] > distances1[leaf - 1]){
+                leaf = i + 1;
+            }
         }
-        return diameter;
+        System.out.println("distances "+Utils.toString(distances1));
+        System.out.println("leaf "+leaf);
+        int[] distances2 = Bfs.getDistances(adjMatrix, leaf);
+        int max = 0;
+        for (int i = 0; i < distances2.length; i++) {
+            max = distances2[i] > max ? distances2[i] : max;
+        }
+        return max;
     }
-    
-    private void calc(){
-        int len = getLen(tree.getRoot());
-    }
-
-    private int getLen(LinkedBinaryTree.Node v) {
-        int left = v.getLeft() == null ? 0 : getLen(v.getLeft()) + 1;
-        int right = v.getRight()== null ? 0 : getLen(v.getRight()) + 1;
-        diameter = Math.max(left + right, diameter);
-        return Math.max(left, right);
-    }
-
 }

@@ -6,6 +6,7 @@
 package algorithms.graph;
 
 import algorithms.data.ArrayQueue;
+import algorithms.utils.Utils;
 
 /**
  *
@@ -27,6 +28,7 @@ public class Bfs {
         while (!queue.isEmpty()){
             int v = queue.dequeue();
             int[] uu = GraphUtils.getAdj(adjMatrix, v);
+            System.out.println("adj to "+v+" : "+Utils.toString(uu));
             for (int i = 0; i < uu.length; i++) {
                 if (colors[uu[i] - 1] == 0){
                     queue.enqueue(uu[i]);
