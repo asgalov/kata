@@ -5,19 +5,17 @@
 
 static unsigned long rand = 11;
 
-void quicksort(int arr[], int begin, int end, int pv);
+void quicksort(int arr[], int b, int e);
 int genrnd(unsigned int n);
 void swap(int arr[], int b, int e);
 
+
 int main(int argc, const char *argv[])
 {
-    int size = 40;
-    int arr[size];
+    int size = 10;
+    int arr[] = {2,3,5,6,2,1,3,8,0,9};
+    quicksort(arr, 0, size - 1);
     int i;
-    for (i = 0; i < size; i++)
-        arr[i] = genrnd(RND_MAX_NUMBER);
-
-    quicksort(arr, 0, size - 1, arr[size / 2]);
     for (i = 0; i < size; i++)
         printf(" %d", arr[i]);    
     
@@ -25,25 +23,29 @@ int main(int argc, const char *argv[])
 }
 
 
-void quicksort(int arr[], int begin, int end, int pv)
+void quicksort(int arr[], int b, int e)
 {
-    if (begin == end)
-        return ;
-
-    int b = begin;
-    int e = end;
-    while (b < e) {
-        while (arr[b] < pv)
-            b++;
-
-        while (arr[e] >= pv)
-            e--;
-
-        swap(arr, b, e);
+    if (b < e){
+        int p = partition(arr, b, e) ;
+        quicksort(arr, b, p - 1);
+        quicksort(arr, p + 1, e);
     }
+}
 
-    quicksort(arr, begin, e, arr[begin + (e - begin)/2]);
-    quicksort(arr, b, end, arr[b + (end - b)/2]);
+
+int partition(int arr[], int b, int e)
+{
+    swap(arr, b + genrnd(e - b), b);
+    int p = b;
+    int i;
+    for (i = b; i <= e; i++) {
+        if (arr[i] < arr[p]) {
+            swap(arr, p + 1, i);
+            swap(arr, p + 1, p);
+            p++;
+        }
+    }
+    return p;
 }
 
 
