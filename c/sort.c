@@ -7,7 +7,7 @@
 
 static unsigned long rnd = 11;
 
-int getlinesnum(char* buf, int i);
+int lnum(char* buf, int i);
 void readlines(char* lines[], char* buf, int size);
 void printlines(char* lines[], int ln);
 
@@ -26,7 +26,7 @@ int main(int argc, const char* argv[])
     ssize_t  chunk = read(fd, buf, size); 
     close(fd);
     *(buf + size + 1) = EOF;
-    int ln = getlinesnum(buf, size + 1);
+    int ln = lnum(buf, size + 1);
     char* lines[ln];
     readlines(lines, buf, size + 1);
     quicksort(lines, 0, ln - 1); 
@@ -35,7 +35,7 @@ int main(int argc, const char* argv[])
 }
 
 
-int getlinesnum(char* buf, int size)
+int lnum(char* buf, int size)
 {
     int lncnt = 0;
     int i;
@@ -91,8 +91,8 @@ int partition(char* arr[], int b, int e)
     /* swap(arr, b + genrnd(e - b), b); */
     int p = b;
     int i;
-    for (i = b; i <= e; i++) {
-        if (strcmp(arr[i], arr[p])) {
+    for (i = b + 1; i <= e; i++) {
+        if (scmp(arr[i], arr[p])) {
             swap(arr, p + 1, i);
             swap(arr, p + 1, p);
             p++;
