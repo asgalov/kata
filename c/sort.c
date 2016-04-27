@@ -10,6 +10,8 @@ static unsigned long rnd = 11;
 int lnum(char* buf, int i);
 void readlines(char* lines[], char* buf, int size);
 void printlines(char* lines[], int ln);
+void writelines(char* lines[], int ln);
+int llen(char* line);
 
 void quicksort(char* arr[], int b, int e);
 int scmp(char* s, char* t);
@@ -30,7 +32,7 @@ int main(int argc, const char* argv[])
     char* lines[ln];
     readlines(lines, buf, size + 1);
     quicksort(lines, 0, ln - 1); 
-    printlines(lines, ln);
+    writelines(lines, ln);
     return 0;
 }
 
@@ -76,6 +78,24 @@ void printlines(char* lines[], int ln)
 }
 
 
+void writelines(char* lines[], int ln)
+{
+    int i;
+    for (i = 0; i < ln; i++) {
+        write(1, lines[i], llen(lines[i]));
+    }
+}
+
+
+int llen(char* line)
+{
+    int len = 0;
+    for (len = 0; *(line + len) != '\n' && *(line + len) != EOF; len++)
+        ;
+    return len + 1;
+}
+
+
 void quicksort(char* arr[], int b, int e)
 {
     if (b < e){
@@ -88,7 +108,7 @@ void quicksort(char* arr[], int b, int e)
 
 int partition(char* arr[], int b, int e)
 {
-    /* swap(arr, b + genrnd(e - b), b); */
+    swap(arr, b + genrnd(e - b), b);
     int p = b;
     int i;
     for (i = b + 1; i <= e; i++) {
