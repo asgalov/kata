@@ -5,42 +5,43 @@
 
 #define BASE 45901;
 
-static unsigned long rnd = 11;
+static  long rnd = 11;
 
-int lnum(char* buf, int i);
-void readlines(char* lines[], char* buf, int size);
-void printlines(char* lines[], int ln);
-void writelines(char* lines[], int ln);
+long lnum(char* buf, long i);
+void readlines(char **lines, char* buf, long size);
+void printlines(char **lines, long ln);
+void writelines(char **lines, long ln);
 int llen(char* line);
 
-void quicksort(char* arr[], int b, int e);
+void quicksort(char **arr, long b, long e);
+long partition(char **arr, long b, long e);
 int scmp(char* s, char* t);
-void swap(char* arr[], int b, int e);
-int genrnd(unsigned int n);
+void swap(char **arr, long b, long e);
+int genrnd(int n);
 
 
 int main(int argc, const char* argv[])
 {
     int fd = open(argv[1], O_RDONLY, 0);
-    int size = lseek(fd, 0, SEEK_END);
+    long size = lseek(fd, 0, SEEK_END);
     lseek(fd, 0, SEEK_SET);
-    char* buf = malloc(size + 1);
+    char *buf = malloc(size + 1);
     ssize_t  chunk = read(fd, buf, size); 
     close(fd);
     *(buf + size + 1) = EOF;
-    int ln = lnum(buf, size + 1);
-    char* lines[ln];
-    readlines(lines, buf, size + 1);
-    quicksort(lines, 0, ln - 1); 
-    writelines(lines, ln);
+    long ln = lnum(buf, size + 1);
+    char **linesptr = malloc(sizeof *linesptr * ln);
+    readlines(linesptr, buf, size + 1);
+    quicksort(linesptr, 0, ln - 1); 
+    writelines(linesptr, ln);
     return 0;
 }
 
 
-int lnum(char* buf, int size)
+long lnum(char *buf, long size)
 {
-    int lncnt = 0;
-    int i;
+    long lncnt = 0;
+    long i;
     for(i = 0; i < size; i++)
         if (*(buf + i) == '\n')
             lncnt++; 
@@ -49,45 +50,30 @@ int lnum(char* buf, int size)
 }
 
 
-void readlines(char* lines[], char* buf, int size)
+void readlines(char **lines, char *buf, long size)
 {
-    int lncnt = 0;
-    int i;
-    lines[lncnt] = buf;
+    long lncnt = 0;
+    long i;
+    *(lines + lncnt) = buf;
     lncnt++;
     for(i = 0; i < size; i++){
         if (*(buf + i) == '\n'){
-            lines[lncnt] = buf + i + 1;
+            *(lines + lncnt) = (buf + i + 1);
             lncnt++; 
         }
     }
 }
 
-
-void printlines(char* lines[], int ln)
+void writelines(char **lines, long ln)
 {
-    int i, j;
+    long i;
     for (i = 0; i < ln; i++) {
-        j = 0;
-        while (*(lines[i] + j) != '\n' && *(lines[i] + j) != EOF ) {
-            printf("%c", *(lines[i] + j));    
-            j++;
-        }
-        printf("\n");
+        write(1, *(lines+i), llen(*(lines+i)));
     }
 }
 
 
-void writelines(char* lines[], int ln)
-{
-    int i;
-    for (i = 0; i < ln; i++) {
-        write(1, lines[i], llen(lines[i]));
-    }
-}
-
-
-int llen(char* line)
+int llen(char *line)
 {
     int len = 0;
     for (len = 0; *(line + len) != '\n' && *(line + len) != EOF; len++)
@@ -96,23 +82,23 @@ int llen(char* line)
 }
 
 
-void quicksort(char* arr[], int b, int e)
+void quicksort(char **arr, long b, long e)
 {
     if (b < e){
-        int p = partition(arr, b, e) ;
+        long p = partition(arr, b, e);
         quicksort(arr, b, p - 1);
         quicksort(arr, p + 1, e);
     }
 }
 
 
-int partition(char* arr[], int b, int e)
+long partition(char **arr, long b, long e)
 {
     swap(arr, b + genrnd(e - b), b);
-    int p = b;
-    int i;
+    long p = b;
+    long i;
     for (i = b + 1; i <= e; i++) {
-        if (scmp(arr[i], arr[p])) {
+        if (scmp(*(arr + i), *(arr + p))) {
             swap(arr, p + 1, i);
             swap(arr, p + 1, p);
             p++;
@@ -122,7 +108,7 @@ int partition(char* arr[], int b, int e)
 }
 
 
-int scmp(char* s, char* t)
+int scmp(char *s, char *t)
 {
     int i;
     for (i = 0; (s[i] == t[i]); i++) 
@@ -133,16 +119,16 @@ int scmp(char* s, char* t)
 }
 
 
-void swap(char* arr[], int b, int e)
+void swap(char **arr,  long b,  long e)
 {
-    char* tmp = arr[b];
-    arr[b] = arr[e];
-    arr[e] = tmp;
+    char *tmp = *(arr + b);
+    *(arr + b) = *(arr + e);
+    *(arr + e) = tmp;
 }
 
 
 /* generate uniformly distributed random variable from 0 to n */
-int genrnd(unsigned int n)
+int genrnd( int n)
 {
     rnd = (1103515245*rnd) % BASE ;
     return (n*rnd)/BASE;       
