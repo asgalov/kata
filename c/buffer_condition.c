@@ -65,7 +65,7 @@ void *producer(void *param)
         printf("produce %d ", d);    
         printbuf();
 
-        pthread_cond_signal(&count_threshold);
+        pthread_cond_broadcast(&count_threshold);
         pthread_mutex_unlock(&mutex);
         usleep(genrnd(10000)); 
     }
