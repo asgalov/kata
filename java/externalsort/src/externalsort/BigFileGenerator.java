@@ -28,7 +28,7 @@ public class BigFileGenerator {
     
     public static void main(String[] args) throws IOException {
         String fileName = "/home/gas/tmp/foo";
-        BigFileGenerator.generateBigFile(fileName, 5, 1);
+        BigFileGenerator.generateBigFile(fileName, 2, 1);
     }
     
     public static void generateBigFile(String filename,
@@ -69,7 +69,7 @@ public class BigFileGenerator {
     }
 
     private static String generateRandomString() {
-        String str = Double.toString(Math.random()) + "Hello world!";
+        String str = Integer.toString((int) (100*Math.random())) + "Hello world!";
         return str;
     }
         
