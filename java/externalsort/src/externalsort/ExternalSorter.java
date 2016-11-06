@@ -31,7 +31,7 @@ import java.util.Set;
  */
 public class ExternalSorter {
 
-    public static final int BUF_SIZE = 10000;
+    public static final int BUF_SIZE = 1000000;
     
     /**
      * @param args the command line arguments

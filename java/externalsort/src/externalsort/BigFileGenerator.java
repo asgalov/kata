@@ -28,7 +28,7 @@ public class BigFileGenerator {
     
     public static void main(String[] args) throws IOException {
         String fileName = "/home/gas/tmp/foo";
-        BigFileGenerator.generateBigFile(fileName, 100, 10);
+        BigFileGenerator.generateBigFile(fileName, 100000, 1000);
     }
     
     public static void generateBigFile(String filename,
