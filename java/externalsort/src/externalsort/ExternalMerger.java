@@ -53,21 +53,29 @@ public class ExternalMerger {
             try (SeekableByteChannel inputChannel = Files.newByteChannel(inputPath, inputOptions, attr); 
                  SeekableByteChannel outputChannel = Files.newByteChannel(outputPath, outputOptions, attr)) {
 
-                for (int i = 0; i < oldIndexes.size(); i += 2) {
+                for (int i = 0; i < oldIndexes.size() - 2 - oldIndexes.size() % 2; i += 2) {
                     int inputPosition1 = oldIndexes.get(i);
                     int inputPosition2 = oldIndexes.get(i + 1);
                     newIndexes.add(oldIndexes.get(i + 1));
                     
-                    while (inputPosition1 > oldIndexes.get(i + 1) && inputPosition2 > oldIndexes.get(i + 2)){
+                    while (inputPosition1 < oldIndexes.get(i + 1) && inputPosition2 < oldIndexes.get(i + 2)){
+                        System.out.println("enter while");
                         int size1 = Math.min(BUF_SIZE, oldIndexes.get(i + 1) - inputPosition1);
                         int size2 = Math.min(BUF_SIZE, oldIndexes.get(i + 2) - inputPosition2);
-                        ByteBuffer inputBuf1 = readNextBuffer(inputChannel, inputPosition1, size1);
-                        ByteBuffer inputBuf2 = readNextBuffer(inputChannel, inputPosition2, size2);
-                        inputPosition1 -= size1;
-                        inputPosition2 -= size2;
+                        ByteBuffer inputBuf1 = Utils.readNextBuffer(inputChannel, inputPosition1, size1);
+                        ByteBuffer inputBuf2 = Utils.readNextBuffer(inputChannel, inputPosition2, size2);
+                        inputPosition1 += size1;
+                        inputPosition2 += size2;
                         ByteBuffer outputBuf = mergeBuffers(inputBuf1, inputBuf2);
                         outputChannel.write(outputBuf);
                     }
+                }
+                
+                if (oldIndexes.size() % 2 != 0){//write the rest of the file for odd indexes num
+                    int restSize = oldIndexes.get(oldIndexes.size() - 1) - oldIndexes.get(oldIndexes.size() - 2);
+                    ByteBuffer restBuf = Utils.readNextBuffer(inputChannel, oldIndexes.get(oldIndexes.size() - 2), restSize);
+                    outputChannel.write(restBuf);
+                    newIndexes.add(oldIndexes.get(oldIndexes.size() - 1));
                 }
             }
         } catch (IOException ex) {
@@ -76,15 +84,13 @@ public class ExternalMerger {
         return newIndexes;
     }
 
-    private static ByteBuffer readNextBuffer(SeekableByteChannel channel,
-                int position, int bufSize) throws IOException {
-        channel.position(position);
-        ByteBuffer readBuf = ByteBuffer.allocate(bufSize);
-        channel.read(readBuf);
-        return readBuf;
-    }
-
     private static ByteBuffer mergeBuffers(ByteBuffer inputBuf1, ByteBuffer inputBuf2) {
+        if (inputBuf1.array().length == 0)
+                return inputBuf2;
+        
+        if (inputBuf2.array().length == 0)
+                return inputBuf1;
+        
         List<String> lines = new ArrayList<>();
         lines.addAll(Utils.toLines(inputBuf1));
         lines.addAll(Utils.toLines(inputBuf2));

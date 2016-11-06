@@ -5,7 +5,6 @@
  */
 package externalsort;
 
-import static externalsort.ExternalSorter.BUF_SIZE;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
@@ -18,9 +17,10 @@ import java.util.List;
  */
 class Utils {
     
-    static ByteBuffer readNextBuffer(SeekableByteChannel channel, long position) throws IOException {
+    static ByteBuffer readNextBuffer(SeekableByteChannel channel,
+                int position, int bufSize) throws IOException {
         channel.position(position);
-        ByteBuffer readBuf = ByteBuffer.allocate(BUF_SIZE);
+        ByteBuffer readBuf = ByteBuffer.allocate(bufSize);
         channel.read(readBuf);
         return readBuf;
     }

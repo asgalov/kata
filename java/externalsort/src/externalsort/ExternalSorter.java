@@ -31,7 +31,7 @@ import java.util.Set;
  */
 public class ExternalSorter {
 
-    public static final int BUF_SIZE = 100000;
+    public static final int BUF_SIZE = 10000;
     
     /**
      * @param args the command line arguments
@@ -41,7 +41,12 @@ public class ExternalSorter {
         String outputFileName = "/home/gas/tmp/foo_sorted";
         String mergedFileName = "/home/gas/tmp/foo_merged";
         List<Integer> indexes1 = sortBigFile(inputFileName, outputFileName);
+        System.out.println("sorted indexes:");
+        for (Integer i : indexes1) {
+            System.out.println(i);
+        }
         List<Integer> indexes2 = ExternalMerger.mergeBigFile(outputFileName, mergedFileName, indexes1);
+        System.out.println("merged indexes:");
         for (Integer i : indexes2) {
             System.out.println(i);
         }
@@ -65,14 +70,14 @@ public class ExternalSorter {
             
             long inputSize = Files.size(inputPath);
             System.out.println("inputSize: "+inputSize);
-            long inputPosition = 0;
+            int inputPosition = 0;
             int outputPosition = 0;
             
             try (SeekableByteChannel inputChannel = Files.newByteChannel(inputPath, inputOptions, attr); 
                  SeekableByteChannel outputChannel = Files.newByteChannel(outputPath, outputOptions, attr)) {
                 
                 while (inputSize > BUF_SIZE){
-                    ByteBuffer inputBuf = Utils.readNextBuffer(inputChannel, inputPosition);
+                    ByteBuffer inputBuf = Utils.readNextBuffer(inputChannel, inputPosition, BUF_SIZE);
                     List<String> lines = toLines(inputBuf);
                     Collections.sort(lines);
                     ByteBuffer outputBuf = toByteBuffer(lines);

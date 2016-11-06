@@ -28,11 +28,11 @@ public class BigFileGenerator {
     
     public static void main(String[] args) throws IOException {
         String fileName = "/home/gas/tmp/foo";
-        BigFileGenerator.generateBigFile(fileName, 2, 1);
+        BigFileGenerator.generateBigFile(fileName, 100, 10);
     }
     
     public static void generateBigFile(String filename,
-            int fileSizeMb, int availableRamMb) {
+            int fileSizeKb, int availableRamKb) {
         try {
             Path path = Paths.get(filename);
 
@@ -44,8 +44,8 @@ public class BigFileGenerator {
             FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(perms);
             
             try (SeekableByteChannel channel = Files.newByteChannel(path, options, attr)) {
-                for (int i = 0; i < fileSizeMb/availableRamMb; i++) {
-                    ByteBuffer buf = generateNextBuffer(availableRamMb);
+                for (int i = 0; i < fileSizeKb/availableRamKb; i++) {
+                    ByteBuffer buf = generateNextBuffer(availableRamKb);
                     channel.write(buf);                
                 }
             }
@@ -54,9 +54,9 @@ public class BigFileGenerator {
         }
     }
 
-    private static ByteBuffer generateNextBuffer(int availableRamMb) {
+    private static ByteBuffer generateNextBuffer(int availableRamKb) {
         StringBuilder sb = new StringBuilder("");
-        long availableRamBytes = availableRamMb * 1000000;
+        long availableRamBytes = availableRamKb * 1000;
         while (availableRamBytes > 0){
             String randomString = generateRandomString();
             sb.append(randomString);
