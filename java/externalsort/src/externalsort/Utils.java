@@ -18,9 +18,9 @@ import java.util.List;
 class Utils {
     
     static ByteBuffer readNextBuffer(SeekableByteChannel channel,
-                int position, int bufSize) throws IOException {
+                int position, long bufSize) throws IOException {
         channel.position(position);
-        ByteBuffer readBuf = ByteBuffer.allocate(bufSize);
+        ByteBuffer readBuf = ByteBuffer.allocate((int) bufSize);
         channel.read(readBuf);
         return readBuf;
     }

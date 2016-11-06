@@ -5,7 +5,6 @@
  */
 package externalsort;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import static externalsort.ExternalSorter.BUF_SIZE;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -50,33 +49,38 @@ public class ExternalMerger {
             Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rw-r-----");
             FileAttribute<Set<PosixFilePermission>> attr = PosixFilePermissions.asFileAttribute(perms);
             
+            long inputSize = Files.size(inputPath);
+            
             try (SeekableByteChannel inputChannel = Files.newByteChannel(inputPath, inputOptions, attr); 
                  SeekableByteChannel outputChannel = Files.newByteChannel(outputPath, outputOptions, attr)) {
 
-                for (int i = 0; i < oldIndexes.size() - 2 - oldIndexes.size() % 2; i += 2) {
-                    int inputPosition1 = oldIndexes.get(i);
-                    int inputPosition2 = oldIndexes.get(i + 1);
-                    newIndexes.add(oldIndexes.get(i + 1));
+                System.out.println("oldIndexes.size() "+oldIndexes.size());
+                for (int i = 0; i < oldIndexes.size() - oldIndexes.size() % 2; i += 2) {
+                    System.out.println("i "+i);
+                    int input1 = oldIndexes.get(i);
+                    int input2 = oldIndexes.get(i + 1);
+                    long end1 = oldIndexes.get(i + 1);
+                    long end2 = i + 2 >= oldIndexes.size() ? inputSize : oldIndexes.get(i + 2);
                     
-                    while (inputPosition1 < oldIndexes.get(i + 1) && inputPosition2 < oldIndexes.get(i + 2)){
-                        System.out.println("enter while");
-                        int size1 = Math.min(BUF_SIZE, oldIndexes.get(i + 1) - inputPosition1);
-                        int size2 = Math.min(BUF_SIZE, oldIndexes.get(i + 2) - inputPosition2);
-                        ByteBuffer inputBuf1 = Utils.readNextBuffer(inputChannel, inputPosition1, size1);
-                        ByteBuffer inputBuf2 = Utils.readNextBuffer(inputChannel, inputPosition2, size2);
-                        inputPosition1 += size1;
-                        inputPosition2 += size2;
-                        ByteBuffer outputBuf = mergeBuffers(inputBuf1, inputBuf2);
+                    while (input1 < end1 && input2 < end2){
+                        long size1 = Math.max(Math.min(BUF_SIZE, end1 - input1), 0);
+                        long size2 = Math.max(Math.min(BUF_SIZE, end2 - input2), 0);
+                        ByteBuffer buf1 = Utils.readNextBuffer(inputChannel, input1, size1);
+                        ByteBuffer buf2 = Utils.readNextBuffer(inputChannel, input2, size2);
+                        input1 += size1;
+                        input2 += size2;
+                        ByteBuffer outputBuf = mergeBuffers(buf1, buf2);
                         outputChannel.write(outputBuf);
+                        newIndexes.add(i);
                     }
                 }
                 
-                if (oldIndexes.size() % 2 != 0){//write the rest of the file for odd indexes num
-                    int restSize = oldIndexes.get(oldIndexes.size() - 1) - oldIndexes.get(oldIndexes.size() - 2);
-                    ByteBuffer restBuf = Utils.readNextBuffer(inputChannel, oldIndexes.get(oldIndexes.size() - 2), restSize);
+                if (oldIndexes.size() % 2 != 0){
+                    int lastPosition = oldIndexes.get(oldIndexes.size() - 1);
+                    ByteBuffer restBuf = Utils.readNextBuffer(inputChannel, lastPosition, inputSize - lastPosition);
                     outputChannel.write(restBuf);
-                    newIndexes.add(oldIndexes.get(oldIndexes.size() - 1));
                 }
+                
             }
         } catch (IOException ex) {
             System.out.println(ex.toString());
